@@ -133,5 +133,38 @@ describe('Components | MetricFormModal', () => {
                 modalSaveButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));
             });
         });
+
+        test('should return an error', () => {
+            mock.onPost('metrics', { metric: metric }).reply(500, { error: 'An Error' });
+
+            const { getByTestId } = render(
+                <div>
+                    <ToastContainer />
+                    <MetricFormModal buttonLabel='add' />
+                </div>
+            );
+            const modalButton = getByTestId('metric-form-modal-button');
+            modalButton.click();
+
+            const formInputName = getByTestId('metric-form-modal-input-name');
+            const formInputValue = getByTestId('metric-form-modal-input-value');
+            const formInputDate = getByTestId('metric-form-modal-input-date');
+            const formInputTime = getByTestId('metric-form-modal-input-time');
+            const modalSaveButton = getByTestId('metric-form-modal-btn-save');
+
+            fireEvent.change(formInputName, { target: { value: metric.name } });
+            fireEvent.change(formInputValue, { target: { value: metric.value } });
+            fireEvent.change(formInputDate, { target: { value: '2021-01-02' } });
+            fireEvent.change(formInputTime, { target: { value: '11:12' } });
+
+            expect(formInputName.value).toBe(metric.name);
+            expect(formInputValue.value).toBe(metric.value);
+            expect(formInputDate.value).toBe('2021-01-02');
+            expect(formInputTime.value).toBe('11:12');
+
+            act(() => {
+                modalSaveButton.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+            });
+        });
     });
 });
