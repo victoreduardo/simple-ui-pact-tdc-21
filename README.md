@@ -1,14 +1,17 @@
 # Metric UI
 
+### Link UI
+* `http://localhost:3001`
+
 ### To run the app
 
-#### `make up`
+* `make up`
 
 ### To run all tests
 
-#### `make test`
+* `make test`
 
 ### To turn off the app
 
-#### `make down`
+* `make down`
 
