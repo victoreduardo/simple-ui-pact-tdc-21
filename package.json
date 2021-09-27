@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test_pact": "react-scripts test --runInBand --setupFiles ./pact/setup.js --testMatch '**/*.test.pact.js'",
+    "publish:pact": "node pact/publish.js"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^9.16.1",
     "@testing-library/react": "^12.1.0",
     "axios-mock-adapter": "^1.20.0"
   }

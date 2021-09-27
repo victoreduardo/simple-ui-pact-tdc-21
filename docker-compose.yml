@@ -12,3 +12,11 @@ services:
       - '3001:3000'
     environment:
       - NODE_ENV=development
+    networks:
+      - default
+      - metric_ui
+
+
+networks:
+  metric_ui:
+    name: metric

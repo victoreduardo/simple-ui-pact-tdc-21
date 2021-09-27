@@ -11,5 +11,14 @@ down:
 up: down
 	$(DC_BASE_CMD) up -d --build
 
+bash:
+	$(DC_BASE_CMD) exec app /bin/sh --login
+
 test:
 	$(DC_BASE_CMD) exec app yarn test
+
+pact_test:
+	$(DC_BASE_CMD) exec app yarn test_pact
+
+pact_ublish:
+    $(DC_BASE_CMD) exec app npm run publish:pact
