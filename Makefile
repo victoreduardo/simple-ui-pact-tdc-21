@@ -18,7 +18,7 @@ test:
 	$(DC_BASE_CMD) exec app yarn test
 
 pact_test:
-	$(DC_BASE_CMD) exec app yarn test_pact
+	$(DC_BASE_CMD) exec app yarn pact:test
 
 pact_ublish:
-    $(DC_BASE_CMD) exec app npm run publish:pact
+    $(DC_BASE_CMD) exec app npm run pact:publish

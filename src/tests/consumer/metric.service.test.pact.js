@@ -3,14 +3,6 @@ import api from "../../services/api";
 const { integer } = Pact.Matchers;
 
 describe('Metric Service API', () => {
-    beforeAll((done) => {
-        global.provider.setup().then(() => done());
-    });
-
-    afterAll((done) => {
-        global.provider.finalize().then(() => done());
-    });
-
     describe('all metrics', () => {
         const metricsExpectation = [
             { id: integer(1), name: "Score", value: "12.25", date: "2021-09-22T18:04:54.868Z", created_at: "2021-09-25T13:44:12.755Z", updated_at: "2021-09-25T13:44:12.755Z" },

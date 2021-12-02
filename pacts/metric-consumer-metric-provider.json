@@ -1,0 +1,98 @@
+{
+  "consumer": {
+    "name": "metric-consumer"
+  },
+  "provider": {
+    "name": "metric-provider"
+  },
+  "interactions": [
+    {
+      "description": "a GET request to return all metric",
+      "providerState": "provider allows return all metric",
+      "request": {
+        "method": "GET",
+        "path": "/metrics",
+        "headers": {
+          "Accept": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": [
+            {
+              "id": 1,
+              "name": "Score",
+              "value": "12.25",
+              "date": "2021-09-22T18:04:54.868Z",
+              "created_at": "2021-09-25T13:44:12.755Z",
+              "updated_at": "2021-09-25T13:44:12.755Z"
+            },
+            {
+              "id": 2,
+              "name": "Score 2",
+              "value": "76.31",
+              "date": "2021-09-22T22:40:23.439Z",
+              "created_at": "2021-09-25T13:44:12.767Z",
+              "updated_at": "2021-09-25T13:44:12.767Z"
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.data[0].id": {
+            "match": "type"
+          },
+          "$.body.data[1].id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a POST request to create a metric",
+      "providerState": "provider allows metric creation",
+      "request": {
+        "method": "POST",
+        "path": "/metrics",
+        "headers": {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "metric": {
+            "name": "Foo Baa",
+            "value": "12.33",
+            "date": "2021-01-02 11:12"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "id": 1,
+            "name": "Foo Baa",
+            "value": "12.33",
+            "date": "2021-01-02T11:12:00.000Z"
+          }
+        },
+        "matchingRules": {
+          "$.body.data.id": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
