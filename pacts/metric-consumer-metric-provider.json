@@ -53,7 +53,16 @@
     },
     {
       "description": "a POST request to create a metric",
-      "providerState": "provider allows metric creation",
+      "providerState": [
+        {
+          "name": "provider allows metric creation 2",
+          "params": {
+            "name": "Foo Baa",
+            "value": 12.33,
+            "date": "2021-01-02T11:12:00.000Z"
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "path": "/metrics",

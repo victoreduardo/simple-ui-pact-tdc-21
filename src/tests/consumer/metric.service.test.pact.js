@@ -8,10 +8,26 @@ describe('Metric Service API', () => {
             { id: integer(1), name: "Score", value: "12.25", date: "2021-09-22T18:04:54.868Z", created_at: "2021-09-25T13:44:12.755Z", updated_at: "2021-09-25T13:44:12.755Z" },
             { id: integer(2), name: "Score 2", value: "76.31", date: "2021-09-22T22:40:23.439Z", created_at: "2021-09-25T13:44:12.767Z", updated_at: "2021-09-25T13:44:12.767Z" }
         ];
-
         beforeEach((done) => {
             global.provider.addInteraction({
-                state: 'provider allows return all metric',
+                state: [
+                    {
+                        name: "provider allows metric creation",
+                        params: {
+                            name: "Score",
+                            value: 12.25,
+                            date: "2021-09-22T18:04:54.868Z"
+                        }
+                    },
+                    {
+                        name: "provider allows metric creation",
+                        params: {
+                            name: "Score 2",
+                            value: 76.31,
+                            date: "2021-09-22T22:40:23.439Z"
+                        }
+                    }
+                ],
                 uponReceiving: 'a GET request to return all metric',
                 withRequest: {
                     method: 'GET',
@@ -51,7 +67,16 @@ describe('Metric Service API', () => {
         };
         beforeEach((done) => {
             global.provider.addInteraction({
-                state: 'provider allows metric creation',
+                state: [
+                    {
+                        name: "provider allows metric creation",
+                        params: {
+                            name: "Foo Baa",
+                            value: 12.33,
+                            date: "2021-01-02T11:12:00.000Z"
+                        }
+                    }
+                ],
                 uponReceiving: 'a POST request to create a metric',
                 withRequest: {
                     method: 'POST',
