@@ -8,7 +8,7 @@ global.provider = new Pact({
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     loglevel: 'debug',
     dir: path.resolve(process.cwd(), 'pacts'),
-    spec: 2,
+    spec: 3,
     pactfileWriteMode: 'update',
     consumer: 'metric-consumer',
     provider: 'metric-provider',
